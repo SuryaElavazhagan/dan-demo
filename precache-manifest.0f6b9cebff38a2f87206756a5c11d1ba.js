@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/dan-demo/static/js/runtime~main.27b3841c.js"
   },
   {
-    "revision": "ca226f3e665ade8928f4",
-    "url": "/dan-demo/static/js/main.ca226f3e.chunk.js"
+    "revision": "55114c343b40b7756cdc",
+    "url": "/dan-demo/static/js/main.55114c34.chunk.js"
   },
   {
     "revision": "3c6fd63e4cd156ba73ef",
     "url": "/dan-demo/static/js/1.3c6fd63e.chunk.js"
   },
   {
-    "revision": "ca226f3e665ade8928f4",
+    "revision": "55114c343b40b7756cdc",
     "url": "/dan-demo/static/css/main.3c2e609c.chunk.css"
   },
   {
-    "revision": "95749c41d584bb87606c3b90154c390e",
+    "revision": "061e2c2e2553ab1cdaa836c17b80a149",
     "url": "/dan-demo/index.html"
   }
 ];
