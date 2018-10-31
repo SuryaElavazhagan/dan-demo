@@ -55,12 +55,14 @@ class App extends Component {
     renderAreaChart("bottomChart", this.state.inputText);
   }
 
-  componentDidUpdate(){
-    // If the option is asynchronous, make rendering asynchronous.
-    if(this.state.selectedOption === "Asynchronous")
-      defer(this.renderCharts);
-    else
-      this.renderCharts();
+  componentDidUpdate(_, prevState){
+    if(prevState.inputText !== this.state.inputText){
+      // If the option is asynchronous, make rendering asynchronous.
+      if(this.state.selectedOption === "Asynchronous")
+        defer(this.renderCharts);
+      else
+        this.renderCharts();
+    }
   }
   
 
