@@ -10,8 +10,8 @@ export default function renderLineChart(id, data){
 
     d3.select(`#${id}`).select('svg').remove();
 
-    const screenWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-    const width = screenWidth > 900 ? Math.ceil(screenWidth/2) - 10 : window.screen.width;
+    const screenWidth = Math.min(document.documentElement.clientWidth, window.innerWidth || 0)
+    const width = screenWidth > 900 ? Math.ceil(screenWidth/2) - 10 : screenWidth;
     const height = 350;
 
     const margin = {
