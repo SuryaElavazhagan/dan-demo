@@ -1,4 +1,4 @@
-import { getStackedCoordinates, colors } from './utils';
+import { getStackedCoordinates, colors } from './randomUtils';
 
 /**
  * 
@@ -11,7 +11,7 @@ export default function renderAreaChart(id, data){
 
     d3.select(`#${id}`).select('svg').remove();
 
-    const width = window.innerWidth - 10;
+    const width = window.screen.availWidth;
     const height = 320;
 
     const margin = {
@@ -21,8 +21,8 @@ export default function renderAreaChart(id, data){
         right: 20
     }
     
-    const xThreshold = 250 + ((data.length % 5) * 25);
-    const yThreshold = 250 + ((data.length % 10) * 15);
+    const xThreshold = 250 + ((data.length % 5) * 5);
+    const yThreshold = 250 + ((data.length % 10) * 10);
     const numberOfLayers = 6;
 
     let dataPoints = getStackedCoordinates(xThreshold, yThreshold, numberOfLayers);
@@ -47,15 +47,6 @@ export default function renderAreaChart(id, data){
                     .attr("width", width)
                     .attr("height", height);
 
-    // areaChartSVG.append("g")
-    //             .selectAll("path")
-    //             .data(dataPoints)
-    //             .enter()
-    //             .append("p")
-    //             .attr("d",d => area(d))
-    //             .attr("fill",(_, index) => colors[index])
-    //             .attr("fill-opacity", "0.7");
-
     areaChartSVG.append("g")
                 .selectAll("path")
                 .data(dataPoints)
@@ -67,9 +58,10 @@ export default function renderAreaChart(id, data){
 
     areaChartSVG.append("g")
                 .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
+                .attr("class", "axis")
                 .call(xAxis);
     areaChartSVG.append("g")
                 .attr("transform", `translate(${margin.left + margin.right} , 0)`)
+                .attr("class", "axis")
                 .call(yAxis);
-
 }

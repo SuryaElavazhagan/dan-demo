@@ -1,5 +1,4 @@
-import { getRandomColor, getLinearCoordinates } from './utils';
-
+import { getRandomColor, getLinearCoordinates } from './randomUtils';
 /**
  * 
  * @param {string} id id of the HTML element, in which you want to present the chart
@@ -11,7 +10,7 @@ export default function renderLineChart(id, data){
 
     d3.select(`#${id}`).select('svg').remove();
 
-    const width = window.innerWidth > 500 ? Math.ceil(window.innerWidth/2) - 10 : window.innerWidth;
+    const width = window.screen.availWidth > 500 ? Math.ceil(window.screen.availWidth/2) - 10 : window.screen.availWidth;
     const height = 350;
 
     const margin = {
@@ -21,8 +20,8 @@ export default function renderLineChart(id, data){
         right: 20
     }
     
-    const xThreshold = 250 + ((data.length % 5) * 25);
-    const yThreshold = 250 + ((data.length % 10) * 15);
+    const xThreshold = 250 + ((data.length % 5) * 5);
+    const yThreshold = 250 + ((data.length % 10) * 10);
 
     let dataPoints = getLinearCoordinates(xThreshold, yThreshold);
 
@@ -57,9 +56,10 @@ export default function renderLineChart(id, data){
 
     lineChartSVG.append("g")
                 .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
+                .attr("class", "axis")
                 .call(xAxis);
     lineChartSVG.append("g")
                 .attr("transform", `translate(${margin.left + margin.right} , 0)`)
+                .attr("class", "axis")
                 .call(yAxis);
-
 }

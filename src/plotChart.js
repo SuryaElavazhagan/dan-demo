@@ -1,4 +1,4 @@
-import { getRandomColor, getRandomCoordinates } from './utils'
+import { getRandomColor, getRandomCoordinates } from './randomUtils'
 
 /**
  * 
@@ -11,7 +11,7 @@ export default function renderPlotChart(id, data){
 
     d3.select(`#${id}`).select('svg').remove();
 
-    const width = window.innerWidth > 500 ? Math.ceil(window.innerWidth/2) - 10 : window.innerWidth;
+    const width = window.screen.availWidth > 500 ? Math.ceil(window.screen.availWidth/2) - 10 : window.screen.availWidth;
     const height = 350;
 
     const margin = {
@@ -42,13 +42,6 @@ export default function renderPlotChart(id, data){
                     .append("svg")
                     .attr("width", width)
                     .attr("height", height);
-    
-    plotChartSVG.append("g")
-                .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
-                .call(xAxis);
-    plotChartSVG.append("g")
-                .attr("transform", `translate(${margin.left + margin.right} , 0)`)
-                .call(yAxis);
 
     plotChartSVG.append("g")
                 .selectAll("circle")
@@ -60,4 +53,14 @@ export default function renderPlotChart(id, data){
                 .attr("r", "7")
                 .attr("fill",() => getRandomColor())
                 .attr("fill-opacity", "0.7");
+
+    plotChartSVG.append("g")
+            .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
+            .attr("class", "axis")
+            .call(xAxis);
+
+    plotChartSVG.append("g")
+            .attr("class", "axis")
+            .attr("transform", `translate(${margin.left + margin.right} , 0)`)
+            .call(yAxis);
 }
