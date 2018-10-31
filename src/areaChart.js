@@ -10,8 +10,8 @@ export default function renderAreaChart(id, data){
     const d3 = require('d3');
 
     d3.select(`#${id}`).select('svg').remove();
-
-    const width = window.screen.availWidth;
+    
+    const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
     const height = 320;
 
     const margin = {

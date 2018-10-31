@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // It is an unstable module, don't use in production use cases
 import {unstable_scheduleCallback as defer} from 'scheduler';
-import './app.css';
+import './App.css';
 import DebouncedInput from './DebouncedInput';
 import renderPlotChart from './plotChart';
 import renderLineChart from './lineChart';
@@ -39,6 +39,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    window.addEventListener("resize",this.renderCharts);
     this.renderCharts();
   }
 

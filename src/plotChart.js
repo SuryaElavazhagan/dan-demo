@@ -11,7 +11,8 @@ export default function renderPlotChart(id, data){
 
     d3.select(`#${id}`).select('svg').remove();
 
-    const width = window.screen.availWidth > 500 ? Math.ceil(window.screen.availWidth/2) - 10 : window.screen.availWidth;
+    const screenWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+    const width = screenWidth > 900 ? Math.ceil(screenWidth/2) - 10 : window.screen.width;
     const height = 350;
 
     const margin = {
